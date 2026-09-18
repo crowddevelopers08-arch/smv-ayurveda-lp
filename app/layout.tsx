@@ -55,7 +55,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           `}
         </Script>
 
-        {/* Meta Pixel */}
+        {/* Meta Pixels */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
