@@ -41,7 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         {/* Google Tag Manager */}
-        <Script id="google-tag-manager" strategy="afterInteractive">
+        <Script id="google-tag-manager" strategy="beforeInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -50,15 +50,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             })(window,document,'script','dataLayer','GTM-T3H4LJSH');
           `}
         </Script>
-        {/* End Google Tag Manager */}
 
         {/* Google Ads (gtag.js) */}
         <Script
           id="google-ads"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=AW-18173474730"
         />
-        <Script id="google-ads-init" strategy="afterInteractive">
+        <Script id="google-ads-init" strategy="beforeInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -66,9 +65,31 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             gtag('config', 'AW-18173474730');
           `}
         </Script>
+      </head>
+      <body className="min-h-full flex flex-col font-poppins">
+        {/* GTM noscript */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-T3H4LJSH"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
 
-        {/* Meta Pixels */}
-        <Script id="meta-pixel" strategy="afterInteractive">
+        {/* Meta Pixel noscript */}
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=882738111572328&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
+
+        {/* Meta Pixel — use beforeInteractive if you want it in source */}
+        <Script id="meta-pixel" strategy="beforeInteractive">
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -84,7 +105,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </Script>
 
         {/* Microsoft Clarity */}
-        <Script id="microsoft-clarity" strategy="afterInteractive">
+        <Script id="microsoft-clarity" strategy="beforeInteractive">
           {`
             (function(c,l,a,r,i,t,y){
               c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -93,29 +114,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             })(window, document, "clarity", "script", "xnszrnoftn");
           `}
         </Script>
-      </head>
-      <body className="min-h-full flex flex-col font-poppins">
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-T3H4LJSH"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
-        {/* End Google Tag Manager (noscript) */}
-
-        {/* Meta Pixel Noscript Fallback */}
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=882738111572328&ev=PageView&noscript=1"
-            alt=""
-          />
-        </noscript>
 
         {children}
       </body>
