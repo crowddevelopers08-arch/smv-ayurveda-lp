@@ -5,11 +5,13 @@ import TopBar from "../../components/TopBar";
 export default function ThankYouPage() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#fff7fa]">
-      {/* Google Ads Conversion Tracking - Submit Lead | SMV Consultation LP */}
-      <Script id="google-ads-conversion-smv" strategy="afterInteractive">
+  
+
+      {/* Event snippet for Submit lead New | 26/926 conversion page */}
+      <Script id="google-ads-conversion-submit-lead-new" strategy="afterInteractive">
         {`
           gtag('event', 'conversion', {
-            'send_to': 'AW-18173474730/FQkLCLCZz68cEKrv5NlD'
+            'send_to': 'AW-18173474730/9WlhCKfr_IUdEKrv5NlD'
           });
         `}
       </Script>
